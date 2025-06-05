@@ -4,6 +4,9 @@ const restaurant = {
     categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
     starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+    order: function (starterIndex, mainIndex) {
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    }
 }
 const arr = [1, 2, 3];
 const a = arr[0];
@@ -27,3 +30,17 @@ console.log(main, secondary);
 
 [main, secondary] = [secondary, main];
 console.log(main, secondary);
+
+console.log(restaurant.order(2, 1));
+const [starter, mainCourse] = restaurant.order(2, 1);
+console.log(starter, mainCourse);
+
+const nested = [2, 3, [1, 4]];
+// const [i, , j] = nested;
+// console.log(i, j);
+
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
+
+const [p = 1, q = 1, r = 1] = [4, 5];
+console.log(p, q, r);
