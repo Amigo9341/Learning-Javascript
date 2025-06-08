@@ -24,7 +24,13 @@ const restaurant = {
     orderDelivery: function ({ starterIndex, time, mainIndex, address }) {
         console.log(`Order received! ${restaurant.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered shortly at ${address} on ${time}`);
     },
-
+    orderPasta: function (ing1, ing2, ing3) {
+        console.log(`Here is your delicious pasta with ${ing1},${ing2},${ing3}`);
+    },
+    orderPizza: function (keyingredients, ...anyOthers) {
+        console.log(keyingredients);
+        console.log(anyOthers);
+    }
 };
 restaurant.orderDelivery
     ({
@@ -92,4 +98,86 @@ console.log(s, t);
 const { fri: { open: o, close: cl } } = openingHours;
 console.log(o, cl);
 
+// Spreading Operators //
+
+const array = [7, 8, 9];
+const arr1 = [1, 2, array[0], array[1], array[2]];
+console.log(arr1);
+
+const arr2 = [5, 6, ...arr1];
+console.log(arr2);
+console.log(...arr2);
+
+const arr3 = [...restaurant.categories, 'Paneer Butter Masala'];
+console.log(arr3);
+
+// Copy Array //
+
+const copymainMenu = [...restaurant.mainMenu];
+console.log(copymainMenu);
+
+// Join 2 Arrays //
+
+const joint = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(joint);
+
+// Iterables: Arrays, Strings, Maps, Sets. NOT Objects. //
+
+const str = 'Jonas';
+const letters = [...str, '', 'A.'];
+console.log(...str);
+console.log(letters);
+
+// const ingredients = [prompt("What's the 1st ingredient?"),
+// prompt("Ingredient 2?"), prompt("Ingredient 3?")
+// ];
+// console.log(ingredients);
+// console.log(...ingredients);
+// restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+// restaurant.orderPasta(...ingredients);
+
+//Objects //
+
+const restorante = { founded: 1990, ...restaurant, founder: 'Josh Italiano' }
+console.log(restorante);
+
+const newRestaurantCopy = { ...restaurant };
+newRestaurantCopy.name = 'Leonardo Bonucci';
+console.log(newRestaurantCopy.name);
+console.log(restaurant.name);
+
+
+// 1)DESTRUCTURING
+
+//  SPREADING, Because on right side of '='
+const Arr = [1, 2, ...[3, 4]];
+
+//REST, because on left side of '='
+const [m, l, , ...others] = [1, 2, 3, 4, 5];
+console.log(m, l, others);
+
+const [pizza, Risotto, ...otherFoods] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(pizza, Risotto, otherFoods);
+
+//Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(openingHours);
+
+//2) Functions
+const add = function (...numbers) {
+    sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    } console.log(sum);
+}
+add(1, 2);
+add(8, 9, 54, 11);
+add(87, 103, 47.02, 111, 123);
+add(124, 1045, 12, 41, 36985, 14, 2154, 1);
+
+const x1 = [23, 5, 7];
+add(...x1);
+
+restaurant.orderPizza('mushrooms', 'chilli', 'cheese', 'oregano', 'jalapenos');
+restaurant.orderPizza('mushrooms');
 
