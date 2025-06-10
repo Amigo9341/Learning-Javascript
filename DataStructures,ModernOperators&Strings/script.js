@@ -181,3 +181,67 @@ add(...x1);
 restaurant.orderPizza('mushrooms', 'chilli', 'cheese', 'oregano', 'jalapenos');
 restaurant.orderPizza('mushrooms');
 
+//USE any data type,RETURN any data type//
+
+console.log('---OR---');
+
+console.log(3 || 'Jonas');
+console.log('' || 'Jonas');
+console.log(true || 'Jonas');
+console.log(undefined || null);
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+restaurant.numGuests = 23;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('---AND---');
+
+console.log(0 && 'Jonas');
+console.log(7 && 'Jonas');
+console.log('Hello' && 23 && null && 'Jonas');
+
+if (restaurant.orderPizza) {
+    restaurant.orderPizza('Spinach', 'Mushrooms');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('Spinach', 'Mushrooms');
+
+restaurant.numGuest = 0;
+const guest = restaurant.numGuest || 10;
+console.log(guest);
+
+//NULLISH: Null or underfined(not 0 or '')
+const guessCorrect = restaurant.numGuest ?? 10;
+console.log(guessCorrect);
+
+const rest1 = {
+    name: 'Capri',
+    // numOfGuests: 20,
+    numOfGuests: 0,
+};
+const rest2 = {
+    name: 'La Piazza',
+    owner: 'Giovanni Rossi',
+};
+//OR Assignmet Operator
+// rest1.numOfGuests = rest1.numOfGuests || 10;
+// rest2.numOfGuests = rest2.numOfGuests || 10;
+// rest1.numOfGuests ||= 10;
+// rest2.numOfGuests ||= 10;
+
+//Nullish Assignment Operator (null) 
+rest1.numOfGuests ??= 10;
+rest2.numOfGuests ??= 10;
+
+//AND Assignment Operator
+// rest1.owner = rest1.owner && '<ANONYMOUS>';
+// rest2.owner = rest2.owner && '<ANONYMOUS>';
+
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+console.log(rest1);
+console.log(rest2);
