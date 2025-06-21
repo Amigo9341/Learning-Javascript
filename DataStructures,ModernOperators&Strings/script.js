@@ -438,4 +438,137 @@ console.log(airline.indexOf('r'));
 console.log(airline.lastIndexOf('r'));
 console.log(airline.indexOf('Airlines'));
 
+console.log(airline.slice(1));
+console.log(airline.slice(5));
+console.log(airline.slice(8, 11));
 
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(0, airline.indexOf(' ') + 2));
+console.log(airline.slice(airline.lastIndexOf('r')));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -2));
+
+const checkMiddleSeat = function (seat) {
+    //B and E are middle seats.
+    const s = seat.slice(-1);
+    if (s === 'B' || s === 'E') {
+        console.log('You got the middle seat😁');
+    } else {
+        console.log('You got Lucky!🥳')
+    }
+};
+checkMiddleSeat('25B');
+checkMiddleSeat('78D');
+checkMiddleSeat('30E');
+
+console.log(new String('Jonas'));
+console.log(typeof new String('Jonas'));
+console.log(typeof new String('Jonas').slice(1));
+
+//STRINGS PART-2//
+
+//Fix capitalization in name//
+
+const passenger = 'jONaS';
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+//comparing emails//
+const email = 'hello@jonas.io';
+const loginEmail = '  Hello@jonas.Io \n';
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+console.log(lowerEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+//replacing//
+
+const priceGB = '288,97Euros';
+const priceUSA = priceGB.replace('Euros', '$').replace(',', '.');
+console.log(priceUSA);
+const announcement = 'All passengers come to Boarding Door 23. Come to Boarding Door 23!';
+console.log(announcement.replace('Door', 'Gate'));
+console.log(announcement.replaceAll('Door', 'Gate'));
+console.log(announcement.replace(/Door/g, 'Gate'));
+
+//Booleans//
+
+const plane1 = 'Airbus A320neo';
+console.log(plane1.includes('A320'));
+console.log(plane1.includes('Boeing'));
+console.log(plane1.startsWith('Airb'));
+
+if (plane1.startsWith('Airb') && plane1.endsWith('neo')) {
+    console.log("Part of the new Airbus family.");
+}
+
+//Practice examples//
+
+const checkBaggage = function (items) {
+    const baggage = items.toLowerCase();
+    if (baggage.includes('gun') || baggage.includes('knife')) {
+        console.log('You are not allowed onboard.')
+    } else { console.log('Welcome aboard!') }
+};
+checkBaggage('I have a Laptop,some Food and a pocket Knife');
+checkBaggage('Socks and Camera');
+checkBaggage('Got some snacks and a gun for protection.');
+
+console.log('a+very+nice+string'.split('+'));
+console.log('Jonas Schmedtmann'.split(' '));
+
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+    const names = name.split(' ');
+    const namesUpper = [];
+    for (const n of names) {
+        console.log(n);
+        namesUpper.push(n[0].toUpperCase() + n.slice(1));
+        namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+    }
+    console.log(namesUpper.join(' '));
+}
+capitalizeName('jessica ann smith davis');
+capitalizeName('jonas schmedtmann');
+
+//Padding
+
+const message = 'Go to Gate 23!';
+console.log(message.padStart(20, '+').padEnd(30, '+'));
+console.log(message.padStart(20, '*').padEnd(30, '*'));
+console.log('AmanKumarGoswami'.padStart(20, '*').padEnd(30, '*'));
+console.log('TheWeeknd'.padStart(20, 'XO').padEnd(30, 'XO'));
+
+const maskedCreditcard = function (number) {
+    const str = number + '';
+    const last = str.slice(-4);
+    return last.padStart(str.length, '*');
+};
+console.log(maskedCreditcard(897856));
+console.log(maskedCreditcard(124596873652));
+console.log(maskedCreditcard(874951623753));
+console.log(maskedCreditcard(987123645852));
+
+//Repeat
+
+const message2 = 'Bad Weather...All Departures delayed!...';
+console.log(message2.repeat(10));
+
+const planesInLine = function (n) {
+    console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`)
+}
+planesInLine(5);
+planesInLine(15);
+planesInLine(8);
+planesInLine(2);
