@@ -229,3 +229,5 @@ run0nce();
 }
 // console.log(isPrivate);
 console.log(notPrivate);
+
+//NEXT IS CLOSURES. READ FROM LECTURE PDF. IMPORTANT STUFF HAI.
