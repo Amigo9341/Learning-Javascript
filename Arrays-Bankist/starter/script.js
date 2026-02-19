@@ -65,11 +65,6 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -110,22 +105,66 @@ console.log(letters.join(' - '));
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-for (const movement of movements) {
+// for (const movement of movements) {
 
+//   if (movement > 0) {
+//     console.log(`You deposited ${movement}`);
+//   }
+//   else {
+//     console.log(`You withdrew ${Math.abs(movement)}`);
+//   }
+// }
+
+// console.log('----FOR EACH----');
+// movements.forEach(function (movement) {
+//   if (movement > 0) {
+//     console.log(`You deposited ${movement}`);
+//   }
+//   else {
+//     console.log(`You withdrew ${Math.abs(movement)}`);
+//   }
+// });
+
+for (const [i, movement] of movements.entries()) { //MUST READ - THE ORDER OF THE PARAMETERS OF THE FOR-OF entries() FUNCTION(loop) WHERE THE 1ST ONE IS THE INDEX OF THE ARRAY, 2ND IS THE ELEMENT OF THE ARRAY.
   if (movement > 0) {
-    console.log(`You deposited ${movement}`);
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
   }
   else {
-    console.log(`You withdrew ${Math.abs(movement)}`);
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
   }
 }
 
 console.log('----FOR EACH----');
-movements.forEach(function (movement) {
-  if (movement > 0) {
-    console.log(`You deposited ${movement}`);
+
+movements.forEach(function (mov, i, arr) { //MUST READ - THE ORDER OF THE PARAMETERS OF THE forEach *call back* FUNCTION(loop) WHERE THE 1ST ONE IS THE ELEMENT IN THE ARRAY, 2ND IS THE INDEX, 3RD IS THE ARRAY.
+  if (mov > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${mov}`);
   }
   else {
-    console.log(`You withdrew ${Math.abs(movement)}`);
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
   }
 });
+// THE DIFF B/W BOTH LOOPS IS - YOU WON'T BE ABLE TO BREAK OUT OF THE FOR-OF LOOP BUT CAN DO IN THE forEach LOOP.
+
+//MAP
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function (value, key, map) {
+  console.log(`${key} : ${value}`);
+});
+
+//SET
+const currenciesUnique = new Set([
+  'USD', 'GBP', 'USD', 'EUR', 'EUR'
+])
+console.log(currenciesUnique);
+// currenciesUnique.forEach(function (value, key, map) {  //KEY IS NON EXISTENT IN THIS SET
+//   console.log(`${key} : ${value}`);                    // THERE IS NO VALUE FOR A KEY HERE. ITS ONLY VALUES HERE.
+// })
+currenciesUnique.forEach(function (value, _, map) {      // '_' IS A THROWAWAY VARIABLE WHICH MEANS A VARIABLE WHICH IS UNNECESSARY.
+  console.log(`${value} : ${value}`);                    // SO ITS VALUE FOR VALUE.
+})
