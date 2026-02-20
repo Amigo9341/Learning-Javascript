@@ -61,6 +61,29 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
+  //ITS LIKE .textContent = 0
+
+  movements.forEach(function (mov, i) {
+
+    const type = mov > 0 ? 'deposit' : 'withdrawal'
+
+    const html = `
+      <div class="movements__row">
+        <div class="movements__type movements__type--${type}">${i + 1
+      } ${type}</div>
+        <div class="movements__value">${mov}</div>
+      </div>
+      `;
+    ;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+
+  });
+};
+displayMovements(account1.movements);
+// console.log(containerMovements.innerHTML);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -103,7 +126,7 @@ console.log([...arr, ...arr2]);
 //JOIN
 console.log(letters.join(' - '));
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300]; //COMMENTED CUZ OF UPPER PROJECT SAME (MOVEMENTS)
 
 // for (const movement of movements) {
 
@@ -131,8 +154,8 @@ for (const [i, movement] of movements.entries()) { //MUST READ - THE ORDER OF TH
   }
   else {
     console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
-  }
-}
+  };
+};
 
 console.log('----FOR EACH----');
 
@@ -165,6 +188,6 @@ console.log(currenciesUnique);
 // currenciesUnique.forEach(function (value, key, map) {  //KEY IS NON EXISTENT IN THIS SET
 //   console.log(`${key} : ${value}`);                    // THERE IS NO VALUE FOR A KEY HERE. ITS ONLY VALUES HERE.
 // })
-currenciesUnique.forEach(function (value, _, map) {      // '_' IS A THROWAWAY VARIABLE WHICH MEANS A VARIABLE WHICH IS UNNECESSARY.
-  console.log(`${value} : ${value}`);                    // SO ITS VALUE FOR VALUE.
+currenciesUnique.forEach(function (value, _, map) {       // '_' IS A THROWAWAY VARIABLE WHICH MEANS A VARIABLE WHICH IS UNNECESSARY.
+  console.log(`${value} : ${value}`);                     // SO ITS VALUE FOR VALUE.
 })
