@@ -1,8 +1,9 @@
-function describePopulation(country,population){
-   const percentage = percentageOfWorld1(population);
+function describePopulation(country, population) {
+    const percentage = percentageOfWorld1(population);
+    const pr = percentageOfWorld3(population);
 
-    return`${country} has ${population} million people, which is about ${percentageOfWorld3} of the world.`
-    
+    return `${country} has ${population} million people, which is about ${pr} of the world.`
+
 };
 console.log(describePopulation('India', 1448));
 console.log(describePopulation('Germany', 48));
