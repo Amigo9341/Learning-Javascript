@@ -280,6 +280,25 @@ const createUsername = function (accs) {
 createUsername(accounts);
 console.log(accounts);
 
+//EVENT HANDLER
+
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  //prevent form from submitting
+  e.preventDefault();
+
+
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    //DISPLAY UI and message
+
+    console.log('LOGIN');
+  }
+});
+
 //FILTER METHOD
 
 const deposits = movements.filter(function (mov) {
@@ -333,3 +352,13 @@ const totalDespositsUSD = movements
   .map(mov => mov * eurToUsd)
   .reduce((acc, mov) => acc + mov);
 console.log(totalDespositsUSD);
+
+//FIND
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
