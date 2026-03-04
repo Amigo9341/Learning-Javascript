@@ -92,20 +92,20 @@ const calcDisplayBalance = function (movements) {
 
 calcDisplayBalance(account1.movements);
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0)
   labelSumIn.textContent = `${incomes}💶`
 
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0)
   labelSumOut.textContent = `${Math.abs(out)}💶`
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => deposit * 1.2 / 100)
+    .map(deposit => deposit * acc.interestRate / 100)
     .filter((int, i, arr) => {
       console.log(arr);
       return int >= 1
@@ -114,7 +114,7 @@ const calcDisplaySummary = function (movements) {
   labelSumInterest.textContent = `${interest}💶`
 };
 
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -294,9 +294,28 @@ btnLogin.addEventListener('click', function (e) {
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     //DISPLAY UI and message
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
+    containerApp.style.opacity = 100;
 
-    console.log('LOGIN');
+    //Clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    //DISPLAY movements
+    displayMovements(currentAccount.movements);
+    //DISPLAY balance
+    calcDisplayBalance(currentAccount.movements);
+    //DISPLAY summary
+    calcDisplaySummary(currentAccount);
+
   }
+});
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  console.log(amount, receiverAcc);
 });
 
 //FILTER METHOD
@@ -322,6 +341,7 @@ const withdrawalsFor = [];
 for (const mov of movements) if (mov < 0) withdrawalsFor.push(mov);
 
 console.log(withdrawalsFor);
+
 
 
 //REDUCE METHOD
