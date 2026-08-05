@@ -316,6 +316,7 @@ btnTransfer.addEventListener('click', function (e) {
   const amount = Number(inputTransferAmount.value);
   const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
   console.log(amount, receiverAcc);
+  if (amount > 0 && )
 });
 
 //FILTER METHOD
