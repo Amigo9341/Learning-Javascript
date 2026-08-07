@@ -68,6 +68,7 @@ const lister = document.createElement("li");
 
 lister.textContent = "FAAAAH..!!";     //Isme kuch bhi html methods lagado it wont afftect as it is a textContent.
 lister.innerhtml = "<h2>FAAAAH..!!</h2>"; //Innerhtml hai so isme html ke methods kaam karenge.
+//Very dangerous. Dont use innerhtml.
 
 month.prepend(lister);
 
