@@ -30,8 +30,14 @@ a.Aman(21);
 
 const parent = document.getElementById("parent");
 parent.addEventListener('click', (e) => {               //e.target gives you the id which is clicked.
-    e.target.textContent = "I AM CLICKED.."
-})
+    e.target.textContent = "I AM CLICKED.."})
+
+    function handleClick(e){
+        e.target.textContent = "I am Clicked";
+    }
+    parent.addEventListener('click', handleClick);
+    parent.removeEventListener('click', handleClick);  //Better way of removing using function
+
 // console.log(parent.children);
 // for(let Amigo of parent.children){
 //     console.log(Amigo);
