@@ -145,3 +145,18 @@ function deliverOrder(orderDetail){
 // .catch((error) => {console.log("ERROR ",error)
 // });
 
+async function solution() {
+
+    try{
+    
+    const response1 = await placedOrder(orderDetail);
+    const response2 = await preparingOrder(response1);
+    const response3 = await pickupOrder(response2);
+    const response4 = await deliverOrder(response3);
+    console.log(response4);
+    }
+    catch(error){
+        console.log("ERROR: ", error);
+    }
+}
+solution();
