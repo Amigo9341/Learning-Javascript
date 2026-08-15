@@ -160,3 +160,14 @@ async function solution() {
     }
 }
 solution();
+
+async function Aman() {
+    // const comment = await fetch("userComment");
+    // const likes = await fetch("userLikes");
+    // const shares = await fetch("userShares");
+
+    //In above case, we have to wait for each line to execute to moveon to the next line
+    //To execute the three lines parallely ek saath,just do like the line below.
+
+    const [comment, likes, shares] = await Promise.all([fetch("userComment"), fetch("userLikes"), fetch("userShares")])
+}
